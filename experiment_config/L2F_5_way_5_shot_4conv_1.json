@@ -1,5 +1,5 @@
 {
-  "batch_size":1,
+  "batch_size":2,
   "image_height":84,
   "image_width":84,
   "image_channels":3,
@@ -9,8 +9,8 @@
   "dataset_name":"mini_imagenet_full_size",
   "dataset_path":"mini_imagenet_full_size",
   "reset_stored_paths":false,
-  "experiment_name":"mini-imagenet_l2f_mini-imagenet_5_way_1_shot_0_resnet12",
-  "train_seed": 0, "val_seed": 0,
+  "experiment_name":"mini-imagenet_l2f_mini-imagenet_5_way_5_shot_1",
+  "train_seed": 1, "val_seed": 1,
   "indexes_of_folders_indicating_class": [-3, -2],
   "sets_are_pre_split": true,
   "train_val_test_split": [0.64, 0.16, 0.20],
@@ -35,7 +35,7 @@
 
   "dropout_rate_value":0.0,
   "min_learning_rate":0.001,
-  "meta_learning_rate":0.001,   "total_epochs_before_pause": 61,
+  "meta_learning_rate":0.001,   "total_epochs_before_pause": 300,
   "task_learning_rate":-1,
   "first_order_to_second_order_epoch":10,
   "weight_decay": 0.0,
@@ -48,11 +48,13 @@
   "number_of_evaluation_steps_per_iter":5,
   "cnn_blocks_per_stage":1,
   "num_classes_per_set":5,
-  "num_samples_per_class":1,
+  "num_samples_per_class":5,
   "num_target_samples": 15,
 
   "second_order": true,
   "use_multi_step_loss_optimization":false,
   "attenuate": true,
-  "architecture": "ResNet12"
+  "architecture": "4-CONV",
+  "wandb": true,
+  "wandb_log_period": 50
 }

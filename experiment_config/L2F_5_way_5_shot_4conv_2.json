@@ -53,5 +53,8 @@
 
   "second_order": true,
   "use_multi_step_loss_optimization":false,
-  "attenuate": true
+  "attenuate": true,
+  "architecture": "4-CONV",
+  "wandb": true,
+  "wandb_log_period": 50
 }

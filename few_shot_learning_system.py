@@ -81,6 +81,8 @@ class MAMLFewShotClassifier(nn.Module):
         self.use_cuda = args.use_cuda
         self.device = device
         self.args = args
+        self.to(device)
+        self.num_conv_layers = len(names_weights_copy) - 2
 
         print("Outer Loop parameters")
         for name, param in self.named_parameters():
@@ -153,6 +155,7 @@ class MAMLFewShotClassifier(nn.Module):
 
     def attenuate_init(self, task_embeddings, names_weights_copy):
         gamma = self.attenuator(task_embeddings)
+        self.gamma = gamma
 
         gammas = []
         for i in range(gamma.size(0)):

@@ -1,3 +1,6 @@
 *.pyc
 __pycache__
 utils/__pycache__
+wandb
+.git
+experiments
