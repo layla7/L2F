@@ -39,8 +39,10 @@ class ExperimentBuilder(object):
             wandb.run.save()
             wandb.watch(self.model)
 
+            #self.saved_models_filepath, self.logs_filepath, self.samples_filepath = build_experiment_folder(
+            #    experiment_name='experiments/'+project_name+'/'+self.args.experiment_name+'_{}'.format(wandb_id))
             self.saved_models_filepath, self.logs_filepath, self.samples_filepath = build_experiment_folder(
-                experiment_name='experiments/'+project_name+'/'+self.args.experiment_name+'_{}'.format(wandb_id))
+                experiment_name='experiments/'+project_name+'/'+self.args.wandb_run_name+'-{}'.format(wandb_id))
         else:
             self.saved_models_filepath, self.logs_filepath, self.samples_filepath = build_experiment_folder(
                 experiment_name='experiments/'+project_name+'/'+self.args.experiment_name)        
@@ -384,6 +386,8 @@ class ExperimentBuilder(object):
                                 wandb.log({'gamma layer-{} weight'.format(i): weight_mean[i],
                                            'gamma layer-{} std'.format(i): weight_std[i]},
                                           step=self.state['current_iter'])
+                                for value in gammas.values():
+                                    value.clear()
 
 
                     if self.state['current_iter'] % self.args.total_iter_per_epoch == 0:

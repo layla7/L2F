@@ -82,7 +82,6 @@ class MAMLFewShotClassifier(nn.Module):
         self.device = device
         self.args = args
         self.to(device)
-        print(list(names_weights_copy.keys()))
         self.num_conv_layers = len(names_weights_copy) - 2
 
         print("Outer Loop parameters")
